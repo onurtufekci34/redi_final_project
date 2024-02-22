@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Audiowide", sans-serif;
+}
+
+
+#logo {
+  width: 5rem;
+  border-radius: 1rem;
+}
+
+.header,.footer{
+  background-color: rgb(204, 199, 199);
+}
+
+@media (max-width: 459px) {
+  .container {
+    display:flex;
+    flex-direction: column;
+  }
+}
+
+
+/* formSubscription.css */
+
+.formSubscription {
+  max-width: 25rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+}
+
+.formSubscription form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formSubscription label {
+  margin-bottom: 1rem;
+}
+
+.formSubscription input[type="email"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.formSubscription button {
+  padding: 0.7rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.formSubscription button:hover {
+  background-color: #555;
+}
+
+.formSubscription div {
+  text-align: center;
+  
+}
+
+
+
+.formSubscription p {
+  font-size: 1rem;
+  color:tomato
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a{
+  text-decoration: none;
+  color: rgb(30, 48, 80);
+}
+
+
+.card{
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#card:hover{
+  
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+
+.carouselContainer{
+  display: grid;
+  place-items: center;
+}
