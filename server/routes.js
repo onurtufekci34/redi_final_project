@@ -1,7 +1,12 @@
 const express = require("express");
-
 const router = express.Router();
+const {getConnectedClient} = require("./database")
 
+const getCollection = () => {
+    const client = getConnectedClient();
+    const collection = client.db("productsdb").collection("products");
+    return collection;
+}
 
 //Get /products
 router.get("/products",(req,res)=>{
