@@ -26,12 +26,12 @@ router.post("/products", async (req, res) => {
         return res.status(400).json({ mssg: "error no product found" });
     }
 
-    // "_id" ekleyerek yeni bir nesne oluşturun
+   
     const newProduct = { ...product, _id: new ObjectId() };
 
     const result = await collection.insertOne(newProduct);
 
-    // Insert işlemi başarılıysa, oluşturulan nesneyi ve _id'yi yanıt olarak gönderin
+    
     if (result.insertedId) {
         res.status(201).json({ product: newProduct, _id: result.insertedId });
     } else {
