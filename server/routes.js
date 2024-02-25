@@ -22,10 +22,16 @@ router.post("/products",async (req,res)=>{
     const collection =getCollection();
     const {product} = req.body;
 
-    const newProduct = await collection.insertOne({product, status: false})
+    const newProduct = await collection.insertOne({
+        "title": "HP 15-fc0174ng, Notebook ",
+        "price": 499,
+        "description": "Mit einem AMD Ryzen 7 7730U Achtkern-Prozessor, 16 Gigabyte DDR4-Arbeitsspeicher und einer schnellen, 512 Gigabyte großen M.2 PCIe NVMe-SSD ist flotte",
+        "category": "business",
+        "image": "https://www.alternate.de/p/600x600/6/0/HP_15_fc0174ng__Notebook@@1903906.jpg"
+      })
     
 
-    res.status(201).json({product, status:false, _id:newProduct.insertedId});
+    res.status(201).json({product,_id:newProduct.insertedId});
 })
 
 //Delete /products/:id
