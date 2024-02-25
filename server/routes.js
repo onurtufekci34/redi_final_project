@@ -18,21 +18,26 @@ router.get("/products",async (req,res)=>{
 })
 
 // Post /products
-router.post("/products",async (req,res)=>{
-    const collection =getCollection();
-    const {product} = req.body;
+router.post("/products", async (req, res) => {
+    const collection = getCollection();
+    let { product } = req.body;
 
-    const newProduct = await collection.insertOne({
-        "title": "HP 15-fc0174ng, Notebook ",
-        "price": 499,
-        "description": "Mit einem AMD Ryzen 7 7730U Achtkern-Prozessor, 16 Gigabyte DDR4-Arbeitsspeicher und einer schnellen, 512 Gigabyte großen M.2 PCIe NVMe-SSD ist flotte",
-        "category": "business",
-        "image": "https://www.alternate.de/p/600x600/6/0/HP_15_fc0174ng__Notebook@@1903906.jpg"
-      })
-    
+    if (!product) {
+        return res.status(400).json({ mssg: "error no product found" });
+    }
 
-    res.status(201).json({product,_id:newProduct.insertedId});
-})
+    // "_id" ekleyerek yeni bir nesne oluşturun
+    const newProduct = { ...product, _id: new ObjectId() };
+
+    const result = await collection.insertOne(newProduct);
+
+    // Insert işlemi başarılıysa, oluşturulan nesneyi ve _id'yi yanıt olarak gönderin
+    if (result.insertedId) {
+        res.status(201).json({ product: newProduct, _id: result.insertedId });
+    } else {
+        res.status(500).json({ mssg: "error inserting product" });
+    }
+});
 
 //Delete /products/:id
 router.delete("/products/:id",async (req,res)=>{
@@ -49,6 +54,11 @@ router.delete("/products/:id",async (req,res)=>{
 router.put("/products/:id",async (req,res)=>{
     const collection = getCollection();
     const _id = new ObjectId(req.params.id);
+    const {status} = req.body;
+
+    if(typeof status !== "boolean"){
+        return res.status(400).json({mssg:"invalid status"})
+    }
 
     const updatedProduct = await collection.updateOne({_id},{$set: {status:!status}})
 
