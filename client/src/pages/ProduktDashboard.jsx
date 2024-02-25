@@ -14,7 +14,7 @@ const ProduktDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/products");
+        const response = await fetch("/api/products");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -49,7 +49,7 @@ const ProduktDashboard = () => {
       };
       // Send a POST request to your API endpoint
       try {
-        const response = await fetch("http://localhost:3000/api/products", {
+        const response = await fetch("/api/products", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
