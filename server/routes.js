@@ -30,13 +30,24 @@ router.post("/products",async (req,res)=>{
 
 //Delete /products/:id
 router.delete("/products/:id",async (req,res)=>{
-    res.status(200).json({mssg:"Delete resquest to /api/products/:id"});
+    const collection = getCollection();
     const _id = new ObjectId(req.params.id);
+
+    const deletedProduct = await collection.deleteOne({_id});
+
+
+    res.status(200).json(deletedProduct);
 })
 
 // Put /products/:id
-router.put("/products/:id",(req,res)=>{
-    res.status(200).json({mssg:"Put resquest to /api/products/:id"});
+router.put("/products/:id",async (req,res)=>{
+    const collection = getCollection();
+    const _id = new ObjectId(req.params.id);
+
+    const updatedProduct = await collection.updateOne({_id},{$set: {status:!status}})
+
+
+    res.status(200).json(updatedProduct);
 })
 
 
