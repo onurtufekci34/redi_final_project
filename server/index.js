@@ -1,10 +1,16 @@
 require("dotenv").config();
 const express = require("express");
-const {connectToMongoDB} = require("./database")
+const {connectToMongoDB} = require("./database");
+const path = require("path")
 
 
 const app = express();
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname,"dist")));
+app.get("/",(req,res)=>{
+    res.sendFile(path.join(__dirname,"dist/index.html"))
+})
 
 // CORS middleware
 app.use((req, res, next) => {
