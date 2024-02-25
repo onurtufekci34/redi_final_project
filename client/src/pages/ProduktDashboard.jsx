@@ -82,7 +82,7 @@ const ProduktDashboard = () => {
     // Send a DELETE request to your API endpoint
     try {
       const response = await fetch(
-        `/api/products/${productId}`,
+        `http://localhost:3000/api/products/${productId}`,
         {
           method: "DELETE",
         }
