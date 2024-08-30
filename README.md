@@ -37,6 +37,7 @@ public/: Public files (favicon, index.html)
 -Bootstrap
 -React Bootstrap
 -Vite 
+-MongoDB
 ```
 ## Additional Information
 
