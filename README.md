@@ -14,9 +14,7 @@ This project is a web application built using React.
 After installing project dependencies, start the project using the following command:
 
 ```bash
-json-server --watch ./data/db.json --port 3000
-
-npm run dev
+"You don't need to do anything; when you open the link on the right, the site will automatically load because the front-end and back-end are already uploaded to the server. However, it might be a bit slow because I used the free version."
 
 ```
 
